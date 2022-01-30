@@ -6,6 +6,7 @@
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 int sensorValue = 0;
+SoftwareSerial s(3, 1);
 
 void setup() {
   // Initialize LEDs as Output
@@ -26,9 +27,9 @@ void loop() {
   
   //Potentiometer Data
   sensorValue = analogRead(A0);
-  Serial.print("sensor = ");
   Serial.print(sensorValue);
   Serial.print("\n");
+  s.write(sensorValue);
 
   //LEDs
   if (sensorValue < 140){
