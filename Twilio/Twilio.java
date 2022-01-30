@@ -5,3 +5,20 @@ import com.twilio.type.PhoneNumber;
  
 import java.net.URI; 
 import java.math.BigDecimal; 
+
+public class Example { 
+    // Find your Account Sid and Token at twilio.com/console 
+    public static final String ACCOUNT_SID = "Account SID"; 
+    public static final String AUTH_TOKEN = "[AuthToken]"; 
+ 
+    public static void main(String[] args) { 
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN); 
+        Message message = Message.creator( 
+                new com.twilio.type.PhoneNumber("Your Mobile Number"),  
+                "messaging_service_sid", 
+                "Welcome to cyloninator we are working on ")      
+            .create(); 
+ 
+        System.out.println(message.getSid()); 
+    } 
+}
